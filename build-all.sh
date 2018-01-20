@@ -7,6 +7,6 @@ do
 	if [ -e $dir/package.json ]
 	then
 		echo "Building $dir"
-		silicon -c $dir build -s
+		silicon -c $dir build -sd
 	fi
 done
