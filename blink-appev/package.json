@@ -4,7 +4,7 @@
 	"author": "paul",
 	"dependencies": {
 		"@device.farm/si-application-events": "1.0.0",
-		"@device.farm/stm32f0x2": "1.0.5"
+		"@device.farm/si-stm32f0x2": "1.0.0"
 	},
 	"silicon": {
 		"sources": [

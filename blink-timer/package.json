@@ -3,7 +3,8 @@
 	"version": "1.0.0",
 	"author": "paul",
 	"dependencies": {
-		"@device.farm/si-stm32f0x2-timer": "1.0.3"
+		"@device.farm/si-stm32f0x2": "1.0.0",
+		"@device.farm/si-stm32-timer": "1.0.3"
 	},
 	"silicon": {
 		"sources": [
