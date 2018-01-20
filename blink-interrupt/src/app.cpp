@@ -1,6 +1,10 @@
+target::gpio_b_f::Peripheral* LED_PORT = &target::GPIOB;
+int LED_PIN = 7;
+
 void initApplication() {
 	target::RCC.AHBENR.setIOPBEN(true);
-	target::GPIOB.MODER.setMODER(7, 1);
+	
+	LED_PORT->MODER.setMODER(LED_PIN, 1);
 
 	target::RCC.APB1ENR.setTIM14EN(true);
 	target::TIM14.ARR.setARR(0xFFFF);
@@ -19,5 +23,5 @@ bool led = false;
 void interruptHandlerTIM14() {
 	led = !led;
 	target::TIM14.SR.setUIF(0);
-	target::GPIOB.ODR.setODR(7, led);
+	LED_PORT->ODR.setODR(LED_PIN, led);
 }
