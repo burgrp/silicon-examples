@@ -3,7 +3,8 @@
 	"version": "1.0.0",
 	"author": "paul",
 	"dependencies": {
-		"@device.farm/si-stm32f0x2": "1.0.0"
+		"@device.farm/si-application-events": "1.0.0",
+		"@device.farm/stm32f0x2": "1.0.5"
 	},
 	"silicon": {
 		"sources": [
