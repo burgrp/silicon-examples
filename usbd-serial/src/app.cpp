@@ -7,35 +7,29 @@ public:
     
     bool sendZLP = false;
     
-    virtual void init() {
+    void init() {
         rxBufferSize = 64;
         txBufferSize = 64;
         AbstractBulkEndpoint::init();
     }
 
     void correctTransferIn() {
-        
-//        int len = 0;
-//        unsigned char buffer[txBufferSize];
-//        while (len < sizeof(buffer) && transaction.read(&buffer[len])) {
-//            len++;
-//        }
-//        
-//        if (len || sendZLP) {
-//            send(buffer, len);
-//        }
-//        
-//        sendZLP = len == txBufferSize;
-        send(0, 0);
     }
     
     void correctTransferOut(unsigned char* data, int len) {
-        // we got data
+		
+		if (len == 1 && data[0] == 0) {
+			int state = LED_PORT->ODR.getODR(LED_PIN);
+			send((unsigned char*)&state, 1);
+		} 
+		
+		if (len == 2 && data[0] == 1) {
+			LED_PORT->ODR.setODR(LED_PIN, data[1]);
+		}
         statRx(EP_VALID);
     }
 
 };
-
 
 class TestInterface : public usbd::UsbInterface {
 public:
@@ -55,7 +49,7 @@ class TestConfiguration : public usbd::UsbConfiguration {
 public:
 	TestInterface interface;
 
-	virtual void init() {
+	void init() {
 		interfaces[0] = &interface;
 		maxPower = 100;
 		UsbConfiguration::init();
@@ -67,9 +61,8 @@ public:
 
 	TestConfiguration configuration;
 
-	virtual void init() {
-		configurations[0] = &configuration;
-		strVendor = "gogo inc.";
+	void init() {
+		configurations[0] = &configuration;		
 		UsbDevice::init();
 	}
 };
@@ -80,9 +73,9 @@ void initApplication() {
 	target::RCC.AHBENR.setIOPBEN(true);
 	LED_PORT->MODER.setMODER(LED_PIN, 1);
 
-	testDevice.init();
-
 	LED_PORT->ODR.setODR(LED_PIN, 1);
+
+	testDevice.init();
 }
 
 extern "C" {
