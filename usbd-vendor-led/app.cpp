@@ -26,7 +26,7 @@ public:
 		if (len == 2 && data[0] == 1) {
 			LED_PORT->ODR.setODR(LED_PIN, data[1]);
 		}
-        statRx(EP_VALID);
+        statRx(usbd::EP_VALID);
     }
 
 };
@@ -76,19 +76,4 @@ void initApplication() {
 	LED_PORT->ODR.setODR(LED_PIN, 1);
 
 	testDevice.init();
-}
-
-extern "C" {
-
-	void * memcpy(unsigned char* destination, unsigned char const* source, size_t num) {
-		for (int c = 0; c < num; c++) {
-			destination[c] = source[c];
-		}
-		return destination;
-	}
-
-	void __cxa_pure_virtual() {
-		while (1);
-	}
-
 }
