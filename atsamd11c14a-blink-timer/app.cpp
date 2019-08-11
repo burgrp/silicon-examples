@@ -12,7 +12,7 @@ class ToggleTimer : public genericTimer::Timer {
 ToggleTimer timer;
 
 void initApplication() {
-	target::PM.APBBMASK.setPORT_(1);
+	target::PM.APBBMASK.setPORT(1);
 	target::PORT.DIR.setDIR(1 << LED_PIN);
 	timer.start(10);
 }
