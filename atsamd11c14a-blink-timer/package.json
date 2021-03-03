@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"author": "paul",
 	"dependencies": {
-		"@device.farm/si-atsamd11c14a": "^1.0.2",
-		"@device.farm/si-systick-timer": "^1.0.0"
+		"@si14/si-atsamd11c14a": "^2.0.3",
+		"@si14/si-systick-timer": "^1.0.4"
 	},
 	"silicon": {
 		"sources": [
