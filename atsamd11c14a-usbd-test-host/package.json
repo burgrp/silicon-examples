@@ -1,0 +1,14 @@
+{
+  "name": "atsamd11c14a-usbd-test-host",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "usb": "^1.6.5"
+  }
+}
