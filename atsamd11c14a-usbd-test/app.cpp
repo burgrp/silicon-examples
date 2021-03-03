@@ -90,14 +90,8 @@ void initApplication() {
 
   atsamd::safeboot::init(9, false, LED_PIN);
 
-  timer.start(10);
-
-  target::PORT.PMUX[4].setPMUXE(target::port::PMUX::PMUXE::H);
-  target::PORT.PINCFG[8].setPMUXEN(true);
-
-  target::PORT.PMUX[4].setPMUXO(target::port::PMUX::PMUXO::H);
-  target::PORT.PINCFG[9].setPMUXEN(true);
-
   testDevice.useInternalOscilators();
   testDevice.init();
+
+  timer.start(10);
 }
