@@ -74,7 +74,8 @@ public:
   UsbEndpoint *getControlEndpoint() { return &controlEndpoint; };
 
   void checkDescriptor(DeviceDescriptor *deviceDesriptor) {
-    deviceDesriptor->idVendor = 0xFEE0;
+    // claim your VID/PID at https://pid.codes
+    deviceDesriptor->idVendor = 0x1209;
     deviceDesriptor->idProduct = 0x0001;
   };
 
