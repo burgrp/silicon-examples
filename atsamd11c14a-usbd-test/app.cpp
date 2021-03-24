@@ -91,7 +91,7 @@ void initApplication() {
 
   atsamd::safeboot::init(9, false, LED_PIN);
 
-  testDevice.useInternalOscilators();
+  testDevice.useInternalOscillators();
   testDevice.init();
 
   timer.start(10);
